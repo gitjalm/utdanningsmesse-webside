@@ -24,18 +24,18 @@ const data = {
       items: [
         {
           title: "Dashboard",
-          url: "#",
+          url: "/admin",
         },
       ],
     },
     {
-      title: "Settings",
+      title: "Innstillinger",
       url: "#",
       icon: Settings2,
       items: [
         {
-          title: "General",
-          url: "#",
+          title: "Generelt",
+          url: "/admin/settings",
         },
       ],
     },
@@ -59,7 +59,7 @@ export function AdminSidebar({
                   <ShieldUser className="size-4" />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-medium">Admin Page</span>
+                  <span className="font-medium">Admin Side</span>
                   <span className="">v1.0.0</span>
                 </div>
               </a>

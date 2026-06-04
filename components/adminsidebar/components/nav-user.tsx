@@ -65,7 +65,7 @@ export function NavUser({
               }}
             >
               <LogOut />
-              Log out
+              Logg Ut
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
