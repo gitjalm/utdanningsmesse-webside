@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { signOut, useSession } from "@/lib/auth/auth-client";
 import { House, LogIn, ShieldUser, UserRoundPlus } from "lucide-react";
+import { ModeToggle } from "./ModeToggle";
 
 export default function Navbar() {
   const session = useSession();
@@ -55,6 +56,7 @@ export default function Navbar() {
                     </Link>
                   </Button>
                 )}
+                <ModeToggle />
               </div>
             )}
             {!session.data?.user && (
@@ -79,6 +81,7 @@ export default function Navbar() {
                   <UserRoundPlus />
                   Registrer
                 </Button>
+                <ModeToggle />
               </div>
             )}
           </div>
