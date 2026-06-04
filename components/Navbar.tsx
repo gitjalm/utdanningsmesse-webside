@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
-import { signOut, useSession } from "@/lib/auth-client";
+import { signOut, useSession } from "@/lib/auth/auth-client";
 import { House, LogIn, ShieldUser, UserRoundPlus } from "lucide-react";
 
 export default function Navbar() {

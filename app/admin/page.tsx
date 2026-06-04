@@ -1,4 +1,4 @@
-import { getCurrentUserRole } from "@/lib/auth-utils";
+import { getCurrentUserRole } from "@/lib/auth/auth-utils";
 import { redirect } from "next/dist/client/components/navigation";
 
 export default async function AdminPage() {

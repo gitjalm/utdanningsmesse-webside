@@ -2,17 +2,7 @@ import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { Toaster } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
-
-const queryClient = new QueryClient();
+import { Providers } from "./providers";
 
 const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -32,10 +22,7 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", "font-sans", dmSans.variable)}
     >
       <body className="min-h-full flex flex-col">
-        <QueryClientProvider client={queryClient}>
-          <TooltipProvider>{children}</TooltipProvider>
-          <Toaster />
-        </QueryClientProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

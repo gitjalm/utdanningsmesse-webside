@@ -14,7 +14,7 @@ import {
   FieldLabel,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { signIn } from "@/lib/auth-client";
+import { signIn } from "@/lib/auth/auth-client";
 import { loginSchema } from "@/lib/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { redirect } from "next/dist/client/components/navigation";
