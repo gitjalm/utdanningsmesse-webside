@@ -2,91 +2,191 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
-import { Button } from "./ui/button";
+import { useState } from "react";
+import {
+  House,
+  LogIn,
+  LogOut,
+  Menu,
+  ShieldUser,
+  UserRoundPlus,
+  X,
+} from "lucide-react";
+
 import { signOut, useSession } from "@/lib/auth/auth-client";
-import { House, LogIn, ShieldUser, UserRoundPlus } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { ModeToggle } from "./ModeToggle";
+import { Button } from "./ui/button";
 
 export default function Navbar() {
   const session = useSession();
   const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const user = session.data?.user;
+
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname?.startsWith(href);
 
+  const handleSignOut = (redirectTo = "/") => {
+    signOut();
+    window.location.href = redirectTo;
+  };
+
   return (
-    <>
-      <section className="z-[999] flex w-full items-center lg:min-h-18 lg:px-[5%] border-b border-border">
-        <div className="mx-auto size-full lg:grid lg:grid-cols-[0.375fr_0.375fr] lg:items-center lg:justify-between lg:gap-4">
-          <div className="overflow-hidden px-[5%] text-center lg:flex lg:items-center lg:px-0 lg:[--height-closed:auto] lg:[--height-open:auto]">
-            <Link href="/" className="font-semibold text-2xl pr-5">
-              FirmaNavn
-            </Link>
-            <Link
-              href="/"
-              className="block flex gap-2 py-3 text-md first:pt-7 lg:px-4 lg:py-2 lg:text-base first:lg:pt-2 hover:text-primary transition"
+    <header className="sticky top-0 z-[999] w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+      <div className="mx-auto flex min-h-16 w-full max-w-6xl items-center justify-between gap-4 px-5 lg:px-8">
+        <div className="flex min-w-0 items-center gap-6">
+          <Link
+            href="/"
+            className="truncate text-xl font-semibold tracking-normal sm:text-2xl"
+          >
+            FirmaNavn
+          </Link>
+
+          <nav
+            aria-label="Hovedmeny"
+            className="hidden items-center gap-1 lg:flex"
+          >
+            <Button
+              asChild
+              variant={isActive("/") ? "secondary" : "ghost"}
+              className="gap-2"
             >
-              <House />
-              Hjem
-            </Link>
-          </div>
-          <div className="hidden justify-self-end lg:block">
-            {session.data?.user && (
-              <div className="flex gap-2">
+              <Link href="/">
+                <House className="size-4" />
+                Hjem
+              </Link>
+            </Button>
+
+            {user?.role === "ADMIN" && (
+              <Button
+                asChild
+                variant={isActive("/admin") ? "secondary" : "ghost"}
+                className="gap-2"
+              >
+                <Link href="/admin">
+                  <ShieldUser className="size-4" />
+                  Admin
+                </Link>
+              </Button>
+            )}
+          </nav>
+        </div>
+
+        <div className="hidden items-center gap-2 lg:flex">
+          {user ? (
+            <Button variant="outline" onClick={() => handleSignOut()}>
+              <LogOut className="size-4" />
+              Logg Ut
+            </Button>
+          ) : (
+            <>
+              <Button
+                variant="outline"
+                onClick={() => handleSignOut("/signin")}
+              >
+                <LogIn className="size-4" />
+                Logg Inn
+              </Button>
+              <Button onClick={() => handleSignOut("/signup")}>
+                <UserRoundPlus className="size-4" />
+                Registrer
+              </Button>
+            </>
+          )}
+          <ModeToggle />
+        </div>
+
+        <div className="flex items-center gap-2 lg:hidden">
+          <ModeToggle />
+          <Button
+            type="button"
+            variant="outline"
+            size="icon"
+            aria-label={isMenuOpen ? "Lukk meny" : "Apne meny"}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
+            onClick={() => setIsMenuOpen((open) => !open)}
+          >
+            {isMenuOpen ? (
+              <X className="size-5" />
+            ) : (
+              <Menu className="size-5" />
+            )}
+          </Button>
+        </div>
+      </div>
+
+      <div
+        id="mobile-navigation"
+        className={cn(
+          "grid border-t border-border transition-[grid-template-rows] duration-200 lg:hidden",
+          isMenuOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+        )}
+      >
+        <div className="overflow-hidden">
+          {isMenuOpen && (
+            <nav aria-label="Mobilmeny">
+              <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-4">
                 <Button
-                  variant="outline"
-                  onClick={() => {
-                    signOut();
-                    window.location.href = "/";
-                  }}
+                  asChild
+                  variant={isActive("/") ? "secondary" : "ghost"}
+                  className="h-11 justify-start gap-3 px-3"
                 >
-                  Logg Ut
+                  <Link href="/" onClick={() => setIsMenuOpen(false)}>
+                    <House className="size-4" />
+                    Hjem
+                  </Link>
                 </Button>
-                {session.data?.user.role === "ADMIN" && (
-                  <Button asChild>
-                    <Link
-                      href="/admin"
-                      className={cn(
-                        "navigation-link",
-                        isActive("/admin") && "border-primary text-primary",
-                      )}
-                    >
-                      <ShieldUser />
+
+                {user?.role === "ADMIN" && (
+                  <Button
+                    asChild
+                    variant={isActive("/admin") ? "secondary" : "ghost"}
+                    className="h-11 justify-start gap-3 px-3"
+                  >
+                    <Link href="/admin" onClick={() => setIsMenuOpen(false)}>
+                      <ShieldUser className="size-4" />
                       Admin
                     </Link>
                   </Button>
                 )}
-                <ModeToggle />
+
+                <div className="mt-2 grid gap-2 border-t border-border pt-4 sm:grid-cols-2">
+                  {user ? (
+                    <Button
+                      variant="outline"
+                      className="h-11 justify-start gap-3 px-3 sm:col-span-2"
+                      onClick={() => handleSignOut()}
+                    >
+                      <LogOut className="size-4" />
+                      Logg Ut
+                    </Button>
+                  ) : (
+                    <>
+                      <Button
+                        variant="outline"
+                        className="h-11 justify-start gap-3 px-3"
+                        onClick={() => handleSignOut("/signin")}
+                      >
+                        <LogIn className="size-4" />
+                        Logg Inn
+                      </Button>
+                      <Button
+                        className="h-11 justify-start gap-3 px-3"
+                        onClick={() => handleSignOut("/signup")}
+                      >
+                        <UserRoundPlus className="size-4" />
+                        Registrer
+                      </Button>
+                    </>
+                  )}
+                </div>
               </div>
-            )}
-            {!session.data?.user && (
-              <div className="flex gap-2">
-                <Button
-                  variant="outline"
-                  onClick={() => {
-                    signOut();
-                    window.location.href = "/signin";
-                  }}
-                >
-                  <LogIn />
-                  Logg Inn
-                </Button>
-                <Button
-                  className="navigation-link"
-                  onClick={() => {
-                    signOut();
-                    window.location.href = "/signup";
-                  }}
-                >
-                  <UserRoundPlus />
-                  Registrer
-                </Button>
-                <ModeToggle />
-              </div>
-            )}
-          </div>
+            </nav>
+          )}
         </div>
-      </section>
-    </>
+      </div>
+    </header>
   );
 }
