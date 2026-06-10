@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import {
+  GraduationCap,
   House,
   LogIn,
   LogOut,
@@ -38,9 +39,12 @@ export default function Navbar() {
         <div className="flex min-w-0 items-center gap-6">
           <Link
             href="/"
-            className="truncate text-xl font-semibold tracking-normal sm:text-2xl"
+            className="flex gap-2 truncate text-xl font-semibold tracking-normal sm:text-2xl"
           >
-            FirmaNavn
+            <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+              <GraduationCap className="size-4" />
+            </div>
+            Utdanningsmessen
           </Link>
 
           <nav

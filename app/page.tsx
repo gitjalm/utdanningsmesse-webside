@@ -13,15 +13,16 @@ export default function Home() {
         <div className="mx-auto grid min-h-[calc(100vh-73px)] max-w-6xl items-center gap-10 px-5 py-16 md:grid-cols-[1fr_0.85fr] lg:px-8">
           <div>
             <p className="mb-4 text-sm font-medium uppercase tracking-[0.18em] text-muted-foreground">
-              Boilerplate Landing Page
+              Hjemmeside
             </p>
             <h1 className="max-w-3xl text-4xl font-semibold tracking-normal sm:text-5xl lg:text-6xl">
-              Velkommen til min Next.js boilerplate!
+              Velkommen til
+              <br />
+              <strong className="text-primary">utdanningsmessen</strong>!
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-muted-foreground">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Replace
-              this text with a short description of your product, service, or
-              application.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Endre
+              dette med en liten beskrivelse av hva utdanningsmessen er.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
