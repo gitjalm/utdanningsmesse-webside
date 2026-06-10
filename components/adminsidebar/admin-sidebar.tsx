@@ -26,6 +26,10 @@ const data = {
           title: "Dashboard",
           url: "/admin",
         },
+        {
+          title: "Nyheter",
+          url: "/admin/news",
+        },
       ],
     },
     {
