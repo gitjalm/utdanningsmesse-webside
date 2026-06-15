@@ -16,7 +16,7 @@ export default async function Layout({
   return (
     <SidebarProvider>
       <AdminSidebar user={userData} />
-      <main>
+      <main className="w-full">
         <SidebarTrigger />
         {children}
       </main>
