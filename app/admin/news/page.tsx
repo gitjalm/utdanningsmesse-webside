@@ -1,4 +1,7 @@
+import { Plus } from "lucide-react";
 import NewsTable, { type NewsTableItem } from "./components/NewsTable";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const news: NewsTableItem[] = [];
 
@@ -12,7 +15,15 @@ export default function NewsPage() {
           nettsiden.
         </p>
       </div>
-      <NewsTable news={news} />
+      <div>
+        <Button className="mb-4">
+          <Link href="/admin/news/add" className="flex items-center gap-2">
+            <Plus />
+            Ny Nyhet
+          </Link>
+        </Button>
+        <NewsTable news={news} />
+      </div>
     </section>
   );
 }
