@@ -17,6 +17,12 @@ enum Roles {
   ADMIN
 }
 
+enum Status {
+  UTKAST
+  PUBLISERT
+  ARKIVERT
+}
+
 model User {
   id            String    @id
   name          String
@@ -84,4 +90,39 @@ model Verification {
 
   @@index([identifier])
   @@map("verification")
+}
+
+model News {
+  id        String   @id
+  title     String
+  content   String
+  category String
+  image_url String
+  videos    Video[]
+  status  Status @default(UTKAST)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Offer {
+  id        String   @id @default(cuid())
+  title     String
+  content   String?
+
+  videos    Video[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Video {
+  id        String   @id
+  url       String
+  offer_id  String?
+  news_id   String?
+
+  offer     Offer?   @relation(fields: [offer_id], references: [id], onDelete: SetNull)
+  news      News?    @relation(fields: [news_id], references: [id], onDelete: SetNull)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
