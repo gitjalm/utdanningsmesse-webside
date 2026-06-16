@@ -2,7 +2,10 @@
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Edit, ImageIcon, Trash2 } from "lucide-react";
+import Link from "next/link";
+import { toast } from "sonner";
 
 type NewsStatus = "UTKAST" | "PUBLISERT" | "ARKIVERT";
 
@@ -15,13 +18,10 @@ export type NewsTableItem = {
   status: NewsStatus;
   createdAt: Date | string;
   updatedAt: Date | string;
-  videos?: { id: string; url: string }[];
 };
 
 type NewsTableProps = {
   news: NewsTableItem[];
-  onEdit?: (news: NewsTableItem) => void;
-  onDelete?: (news: NewsTableItem) => void;
 };
 
 const statusLabels: Record<NewsStatus, string> = {
@@ -36,6 +36,62 @@ const statusClassNames: Record<NewsStatus, string> = {
   ARKIVERT: "bg-muted text-muted-foreground",
 };
 
+function DeleteNews({ news }: { news: NewsTableItem }) {
+  const queryClient = useQueryClient();
+  const deleteMutation = useMutation({
+    mutationFn: async () => {
+      const response = await fetch(`/api/news/${news.id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: news.id,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete news");
+      }
+    },
+    onSuccess: () => {
+      toast.success("Nyheten ble slettet");
+      queryClient.invalidateQueries({ queryKey: ["News"] });
+    },
+    onError: (error) => {
+      toast.error("Klarte ikke å slette nyheten", {
+        description:
+          error instanceof Error
+            ? error.message
+            : "Feil ved sletting av nyheten",
+      });
+    },
+  });
+
+  function handleDelete() {
+    const confirmed = window.confirm(
+      `Er du sikker på at du vil slette "${news.title}"?`,
+    );
+
+    if (!confirmed) return;
+
+    deleteMutation.mutate();
+  }
+
+  return (
+    <Button
+      type="button"
+      variant="ghost"
+      size="icon-sm"
+      onClick={handleDelete}
+      disabled={deleteMutation.isPending}
+      aria-label={`Slett ${news.title}`}
+    >
+      <Trash2 />
+    </Button>
+  );
+}
+
 function formatDate(value: Date | string) {
   return new Intl.DateTimeFormat("nb-NO", {
     day: "2-digit",
@@ -44,7 +100,7 @@ function formatDate(value: Date | string) {
   }).format(new Date(value));
 }
 
-export default function NewsTable({ news, onEdit, onDelete }: NewsTableProps) {
+export default function NewsTable({ news }: NewsTableProps) {
   if (!news.length) {
     return (
       <div className="rounded-lg border border-dashed p-8 text-center text-sm text-muted-foreground">
@@ -63,7 +119,6 @@ export default function NewsTable({ news, onEdit, onDelete }: NewsTableProps) {
               <th className="px-4 py-3">Nyhet</th>
               <th className="px-4 py-3">Kategori</th>
               <th className="px-4 py-3">Status</th>
-              <th className="px-4 py-3">Videoer</th>
               <th className="px-4 py-3">Opprettet</th>
               <th className="px-4 py-3 text-right">Handlinger</th>
             </tr>
@@ -102,7 +157,6 @@ export default function NewsTable({ news, onEdit, onDelete }: NewsTableProps) {
                     {statusLabels[item.status]}
                   </span>
                 </td>
-                <td className="px-4 py-3">{item.videos?.length ?? 0}</td>
                 <td className="px-4 py-3">{formatDate(item.createdAt)}</td>
                 <td className="px-4 py-3">
                   <div className="flex justify-end gap-2">
@@ -110,22 +164,13 @@ export default function NewsTable({ news, onEdit, onDelete }: NewsTableProps) {
                       type="button"
                       variant="ghost"
                       size="icon-sm"
-                      onClick={() => onEdit?.(item)}
-                      disabled={!onEdit}
                       aria-label={`Rediger ${item.title}`}
                     >
-                      <Edit />
+                      <Link href="/admin/news/edit">
+                        <Edit />
+                      </Link>
                     </Button>
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      size="icon-sm"
-                      onClick={() => onDelete?.(item)}
-                      disabled={!onDelete}
-                      aria-label={`Slett ${item.title}`}
-                    >
-                      <Trash2 />
-                    </Button>
+                    <DeleteNews news={item} />
                   </div>
                 </td>
               </tr>
