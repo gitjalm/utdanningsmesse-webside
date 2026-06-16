@@ -10,11 +10,13 @@ import {
 import { Input } from "@/components/ui/input";
 import { newsSchema } from "@/lib/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useQueryClient } from "@tanstack/react-query";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
 
 export default function AddNewsPage() {
+  const queryClient = useQueryClient();
   const form = useForm<z.infer<typeof newsSchema>>({
     resolver: zodResolver(newsSchema),
     defaultValues: {
@@ -27,7 +29,30 @@ export default function AddNewsPage() {
   });
 
   async function addNews(data: z.infer<typeof newsSchema>) {
-    toast.success("Du fikk laget en nyhet");
+    try {
+      const response = await fetch("/api/news", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to create news");
+      }
+
+      toast.success("Du har laget en ny nyhet!");
+      form.reset();
+      queryClient.invalidateQueries({ queryKey: ["alerts"] });
+    } catch (error) {
+      toast.error("Klarte ikke å lage nyhet", {
+        description:
+          error instanceof Error
+            ? error.message
+            : "Feil ved oppretting av ny nyhet",
+      });
+    }
   }
 
   function showValidationError() {

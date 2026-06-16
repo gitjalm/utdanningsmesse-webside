@@ -28,7 +28,6 @@ export type VideoMinAggregateOutputType = {
   id: string | null
   url: string | null
   offer_id: string | null
-  news_id: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -37,7 +36,6 @@ export type VideoMaxAggregateOutputType = {
   id: string | null
   url: string | null
   offer_id: string | null
-  news_id: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -46,7 +44,6 @@ export type VideoCountAggregateOutputType = {
   id: number
   url: number
   offer_id: number
-  news_id: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -57,7 +54,6 @@ export type VideoMinAggregateInputType = {
   id?: true
   url?: true
   offer_id?: true
-  news_id?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -66,7 +62,6 @@ export type VideoMaxAggregateInputType = {
   id?: true
   url?: true
   offer_id?: true
-  news_id?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -75,7 +70,6 @@ export type VideoCountAggregateInputType = {
   id?: true
   url?: true
   offer_id?: true
-  news_id?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -157,7 +151,6 @@ export type VideoGroupByOutputType = {
   id: string
   url: string
   offer_id: string | null
-  news_id: string | null
   createdAt: Date
   updatedAt: Date
   _count: VideoCountAggregateOutputType | null
@@ -187,22 +180,18 @@ export type VideoWhereInput = {
   id?: Prisma.StringFilter<"Video"> | string
   url?: Prisma.StringFilter<"Video"> | string
   offer_id?: Prisma.StringNullableFilter<"Video"> | string | null
-  news_id?: Prisma.StringNullableFilter<"Video"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Video"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Video"> | Date | string
   offer?: Prisma.XOR<Prisma.OfferNullableScalarRelationFilter, Prisma.OfferWhereInput> | null
-  news?: Prisma.XOR<Prisma.NewsNullableScalarRelationFilter, Prisma.NewsWhereInput> | null
 }
 
 export type VideoOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   url?: Prisma.SortOrder
   offer_id?: Prisma.SortOrderInput | Prisma.SortOrder
-  news_id?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   offer?: Prisma.OfferOrderByWithRelationInput
-  news?: Prisma.NewsOrderByWithRelationInput
 }
 
 export type VideoWhereUniqueInput = Prisma.AtLeast<{
@@ -212,18 +201,15 @@ export type VideoWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.VideoWhereInput | Prisma.VideoWhereInput[]
   url?: Prisma.StringFilter<"Video"> | string
   offer_id?: Prisma.StringNullableFilter<"Video"> | string | null
-  news_id?: Prisma.StringNullableFilter<"Video"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Video"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Video"> | Date | string
   offer?: Prisma.XOR<Prisma.OfferNullableScalarRelationFilter, Prisma.OfferWhereInput> | null
-  news?: Prisma.XOR<Prisma.NewsNullableScalarRelationFilter, Prisma.NewsWhereInput> | null
 }, "id">
 
 export type VideoOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   url?: Prisma.SortOrder
   offer_id?: Prisma.SortOrderInput | Prisma.SortOrder
-  news_id?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.VideoCountOrderByAggregateInput
@@ -238,7 +224,6 @@ export type VideoScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Video"> | string
   url?: Prisma.StringWithAggregatesFilter<"Video"> | string
   offer_id?: Prisma.StringNullableWithAggregatesFilter<"Video"> | string | null
-  news_id?: Prisma.StringNullableWithAggregatesFilter<"Video"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Video"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Video"> | Date | string
 }
@@ -249,14 +234,12 @@ export type VideoCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   offer?: Prisma.OfferCreateNestedOneWithoutVideosInput
-  news?: Prisma.NewsCreateNestedOneWithoutVideosInput
 }
 
 export type VideoUncheckedCreateInput = {
   id: string
   url: string
   offer_id?: string | null
-  news_id?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -267,14 +250,12 @@ export type VideoUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   offer?: Prisma.OfferUpdateOneWithoutVideosNestedInput
-  news?: Prisma.NewsUpdateOneWithoutVideosNestedInput
 }
 
 export type VideoUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   offer_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  news_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -283,7 +264,6 @@ export type VideoCreateManyInput = {
   id: string
   url: string
   offer_id?: string | null
-  news_id?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -299,7 +279,6 @@ export type VideoUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   offer_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  news_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -318,7 +297,6 @@ export type VideoCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   url?: Prisma.SortOrder
   offer_id?: Prisma.SortOrder
-  news_id?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -327,7 +305,6 @@ export type VideoMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   url?: Prisma.SortOrder
   offer_id?: Prisma.SortOrder
-  news_id?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -336,51 +313,8 @@ export type VideoMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   url?: Prisma.SortOrder
   offer_id?: Prisma.SortOrder
-  news_id?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-}
-
-export type VideoCreateNestedManyWithoutNewsInput = {
-  create?: Prisma.XOR<Prisma.VideoCreateWithoutNewsInput, Prisma.VideoUncheckedCreateWithoutNewsInput> | Prisma.VideoCreateWithoutNewsInput[] | Prisma.VideoUncheckedCreateWithoutNewsInput[]
-  connectOrCreate?: Prisma.VideoCreateOrConnectWithoutNewsInput | Prisma.VideoCreateOrConnectWithoutNewsInput[]
-  createMany?: Prisma.VideoCreateManyNewsInputEnvelope
-  connect?: Prisma.VideoWhereUniqueInput | Prisma.VideoWhereUniqueInput[]
-}
-
-export type VideoUncheckedCreateNestedManyWithoutNewsInput = {
-  create?: Prisma.XOR<Prisma.VideoCreateWithoutNewsInput, Prisma.VideoUncheckedCreateWithoutNewsInput> | Prisma.VideoCreateWithoutNewsInput[] | Prisma.VideoUncheckedCreateWithoutNewsInput[]
-  connectOrCreate?: Prisma.VideoCreateOrConnectWithoutNewsInput | Prisma.VideoCreateOrConnectWithoutNewsInput[]
-  createMany?: Prisma.VideoCreateManyNewsInputEnvelope
-  connect?: Prisma.VideoWhereUniqueInput | Prisma.VideoWhereUniqueInput[]
-}
-
-export type VideoUpdateManyWithoutNewsNestedInput = {
-  create?: Prisma.XOR<Prisma.VideoCreateWithoutNewsInput, Prisma.VideoUncheckedCreateWithoutNewsInput> | Prisma.VideoCreateWithoutNewsInput[] | Prisma.VideoUncheckedCreateWithoutNewsInput[]
-  connectOrCreate?: Prisma.VideoCreateOrConnectWithoutNewsInput | Prisma.VideoCreateOrConnectWithoutNewsInput[]
-  upsert?: Prisma.VideoUpsertWithWhereUniqueWithoutNewsInput | Prisma.VideoUpsertWithWhereUniqueWithoutNewsInput[]
-  createMany?: Prisma.VideoCreateManyNewsInputEnvelope
-  set?: Prisma.VideoWhereUniqueInput | Prisma.VideoWhereUniqueInput[]
-  disconnect?: Prisma.VideoWhereUniqueInput | Prisma.VideoWhereUniqueInput[]
-  delete?: Prisma.VideoWhereUniqueInput | Prisma.VideoWhereUniqueInput[]
-  connect?: Prisma.VideoWhereUniqueInput | Prisma.VideoWhereUniqueInput[]
-  update?: Prisma.VideoUpdateWithWhereUniqueWithoutNewsInput | Prisma.VideoUpdateWithWhereUniqueWithoutNewsInput[]
-  updateMany?: Prisma.VideoUpdateManyWithWhereWithoutNewsInput | Prisma.VideoUpdateManyWithWhereWithoutNewsInput[]
-  deleteMany?: Prisma.VideoScalarWhereInput | Prisma.VideoScalarWhereInput[]
-}
-
-export type VideoUncheckedUpdateManyWithoutNewsNestedInput = {
-  create?: Prisma.XOR<Prisma.VideoCreateWithoutNewsInput, Prisma.VideoUncheckedCreateWithoutNewsInput> | Prisma.VideoCreateWithoutNewsInput[] | Prisma.VideoUncheckedCreateWithoutNewsInput[]
-  connectOrCreate?: Prisma.VideoCreateOrConnectWithoutNewsInput | Prisma.VideoCreateOrConnectWithoutNewsInput[]
-  upsert?: Prisma.VideoUpsertWithWhereUniqueWithoutNewsInput | Prisma.VideoUpsertWithWhereUniqueWithoutNewsInput[]
-  createMany?: Prisma.VideoCreateManyNewsInputEnvelope
-  set?: Prisma.VideoWhereUniqueInput | Prisma.VideoWhereUniqueInput[]
-  disconnect?: Prisma.VideoWhereUniqueInput | Prisma.VideoWhereUniqueInput[]
-  delete?: Prisma.VideoWhereUniqueInput | Prisma.VideoWhereUniqueInput[]
-  connect?: Prisma.VideoWhereUniqueInput | Prisma.VideoWhereUniqueInput[]
-  update?: Prisma.VideoUpdateWithWhereUniqueWithoutNewsInput | Prisma.VideoUpdateWithWhereUniqueWithoutNewsInput[]
-  updateMany?: Prisma.VideoUpdateManyWithWhereWithoutNewsInput | Prisma.VideoUpdateManyWithWhereWithoutNewsInput[]
-  deleteMany?: Prisma.VideoScalarWhereInput | Prisma.VideoScalarWhereInput[]
 }
 
 export type VideoCreateNestedManyWithoutOfferInput = {
@@ -425,72 +359,16 @@ export type VideoUncheckedUpdateManyWithoutOfferNestedInput = {
   deleteMany?: Prisma.VideoScalarWhereInput | Prisma.VideoScalarWhereInput[]
 }
 
-export type VideoCreateWithoutNewsInput = {
-  id: string
-  url: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  offer?: Prisma.OfferCreateNestedOneWithoutVideosInput
-}
-
-export type VideoUncheckedCreateWithoutNewsInput = {
-  id: string
-  url: string
-  offer_id?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-}
-
-export type VideoCreateOrConnectWithoutNewsInput = {
-  where: Prisma.VideoWhereUniqueInput
-  create: Prisma.XOR<Prisma.VideoCreateWithoutNewsInput, Prisma.VideoUncheckedCreateWithoutNewsInput>
-}
-
-export type VideoCreateManyNewsInputEnvelope = {
-  data: Prisma.VideoCreateManyNewsInput | Prisma.VideoCreateManyNewsInput[]
-  skipDuplicates?: boolean
-}
-
-export type VideoUpsertWithWhereUniqueWithoutNewsInput = {
-  where: Prisma.VideoWhereUniqueInput
-  update: Prisma.XOR<Prisma.VideoUpdateWithoutNewsInput, Prisma.VideoUncheckedUpdateWithoutNewsInput>
-  create: Prisma.XOR<Prisma.VideoCreateWithoutNewsInput, Prisma.VideoUncheckedCreateWithoutNewsInput>
-}
-
-export type VideoUpdateWithWhereUniqueWithoutNewsInput = {
-  where: Prisma.VideoWhereUniqueInput
-  data: Prisma.XOR<Prisma.VideoUpdateWithoutNewsInput, Prisma.VideoUncheckedUpdateWithoutNewsInput>
-}
-
-export type VideoUpdateManyWithWhereWithoutNewsInput = {
-  where: Prisma.VideoScalarWhereInput
-  data: Prisma.XOR<Prisma.VideoUpdateManyMutationInput, Prisma.VideoUncheckedUpdateManyWithoutNewsInput>
-}
-
-export type VideoScalarWhereInput = {
-  AND?: Prisma.VideoScalarWhereInput | Prisma.VideoScalarWhereInput[]
-  OR?: Prisma.VideoScalarWhereInput[]
-  NOT?: Prisma.VideoScalarWhereInput | Prisma.VideoScalarWhereInput[]
-  id?: Prisma.StringFilter<"Video"> | string
-  url?: Prisma.StringFilter<"Video"> | string
-  offer_id?: Prisma.StringNullableFilter<"Video"> | string | null
-  news_id?: Prisma.StringNullableFilter<"Video"> | string | null
-  createdAt?: Prisma.DateTimeFilter<"Video"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"Video"> | Date | string
-}
-
 export type VideoCreateWithoutOfferInput = {
   id: string
   url: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  news?: Prisma.NewsCreateNestedOneWithoutVideosInput
 }
 
 export type VideoUncheckedCreateWithoutOfferInput = {
   id: string
   url: string
-  news_id?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -521,42 +399,20 @@ export type VideoUpdateManyWithWhereWithoutOfferInput = {
   data: Prisma.XOR<Prisma.VideoUpdateManyMutationInput, Prisma.VideoUncheckedUpdateManyWithoutOfferInput>
 }
 
-export type VideoCreateManyNewsInput = {
-  id: string
-  url: string
-  offer_id?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-}
-
-export type VideoUpdateWithoutNewsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  offer?: Prisma.OfferUpdateOneWithoutVideosNestedInput
-}
-
-export type VideoUncheckedUpdateWithoutNewsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
-  offer_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type VideoUncheckedUpdateManyWithoutNewsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
-  offer_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+export type VideoScalarWhereInput = {
+  AND?: Prisma.VideoScalarWhereInput | Prisma.VideoScalarWhereInput[]
+  OR?: Prisma.VideoScalarWhereInput[]
+  NOT?: Prisma.VideoScalarWhereInput | Prisma.VideoScalarWhereInput[]
+  id?: Prisma.StringFilter<"Video"> | string
+  url?: Prisma.StringFilter<"Video"> | string
+  offer_id?: Prisma.StringNullableFilter<"Video"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"Video"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Video"> | Date | string
 }
 
 export type VideoCreateManyOfferInput = {
   id: string
   url: string
-  news_id?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -566,13 +422,11 @@ export type VideoUpdateWithoutOfferInput = {
   url?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  news?: Prisma.NewsUpdateOneWithoutVideosNestedInput
 }
 
 export type VideoUncheckedUpdateWithoutOfferInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
-  news_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -580,7 +434,6 @@ export type VideoUncheckedUpdateWithoutOfferInput = {
 export type VideoUncheckedUpdateManyWithoutOfferInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
-  news_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -591,69 +444,57 @@ export type VideoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   id?: boolean
   url?: boolean
   offer_id?: boolean
-  news_id?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   offer?: boolean | Prisma.Video$offerArgs<ExtArgs>
-  news?: boolean | Prisma.Video$newsArgs<ExtArgs>
 }, ExtArgs["result"]["video"]>
 
 export type VideoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   url?: boolean
   offer_id?: boolean
-  news_id?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   offer?: boolean | Prisma.Video$offerArgs<ExtArgs>
-  news?: boolean | Prisma.Video$newsArgs<ExtArgs>
 }, ExtArgs["result"]["video"]>
 
 export type VideoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   url?: boolean
   offer_id?: boolean
-  news_id?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   offer?: boolean | Prisma.Video$offerArgs<ExtArgs>
-  news?: boolean | Prisma.Video$newsArgs<ExtArgs>
 }, ExtArgs["result"]["video"]>
 
 export type VideoSelectScalar = {
   id?: boolean
   url?: boolean
   offer_id?: boolean
-  news_id?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type VideoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "url" | "offer_id" | "news_id" | "createdAt" | "updatedAt", ExtArgs["result"]["video"]>
+export type VideoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "url" | "offer_id" | "createdAt" | "updatedAt", ExtArgs["result"]["video"]>
 export type VideoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   offer?: boolean | Prisma.Video$offerArgs<ExtArgs>
-  news?: boolean | Prisma.Video$newsArgs<ExtArgs>
 }
 export type VideoIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   offer?: boolean | Prisma.Video$offerArgs<ExtArgs>
-  news?: boolean | Prisma.Video$newsArgs<ExtArgs>
 }
 export type VideoIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   offer?: boolean | Prisma.Video$offerArgs<ExtArgs>
-  news?: boolean | Prisma.Video$newsArgs<ExtArgs>
 }
 
 export type $VideoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Video"
   objects: {
     offer: Prisma.$OfferPayload<ExtArgs> | null
-    news: Prisma.$NewsPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     url: string
     offer_id: string | null
-    news_id: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["video"]>
@@ -1051,7 +892,6 @@ readonly fields: VideoFieldRefs;
 export interface Prisma__VideoClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   offer<T extends Prisma.Video$offerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Video$offerArgs<ExtArgs>>): Prisma.Prisma__OfferClient<runtime.Types.Result.GetResult<Prisma.$OfferPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  news<T extends Prisma.Video$newsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Video$newsArgs<ExtArgs>>): Prisma.Prisma__NewsClient<runtime.Types.Result.GetResult<Prisma.$NewsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1084,7 +924,6 @@ export interface VideoFieldRefs {
   readonly id: Prisma.FieldRef<"Video", 'String'>
   readonly url: Prisma.FieldRef<"Video", 'String'>
   readonly offer_id: Prisma.FieldRef<"Video", 'String'>
-  readonly news_id: Prisma.FieldRef<"Video", 'String'>
   readonly createdAt: Prisma.FieldRef<"Video", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Video", 'DateTime'>
 }
@@ -1504,25 +1343,6 @@ export type Video$offerArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    */
   include?: Prisma.OfferInclude<ExtArgs> | null
   where?: Prisma.OfferWhereInput
-}
-
-/**
- * Video.news
- */
-export type Video$newsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the News
-   */
-  select?: Prisma.NewsSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the News
-   */
-  omit?: Prisma.NewsOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.NewsInclude<ExtArgs> | null
-  where?: Prisma.NewsWhereInput
 }
 
 /**

@@ -1057,7 +1057,6 @@ export const VideoScalarFieldEnum = {
   id: 'id',
   url: 'url',
   offer_id: 'offer_id',
-  news_id: 'news_id',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

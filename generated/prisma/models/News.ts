@@ -206,7 +206,6 @@ export type NewsWhereInput = {
   status?: Prisma.EnumStatusFilter<"News"> | $Enums.Status
   createdAt?: Prisma.DateTimeFilter<"News"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"News"> | Date | string
-  videos?: Prisma.VideoListRelationFilter
 }
 
 export type NewsOrderByWithRelationInput = {
@@ -218,7 +217,6 @@ export type NewsOrderByWithRelationInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  videos?: Prisma.VideoOrderByRelationAggregateInput
 }
 
 export type NewsWhereUniqueInput = Prisma.AtLeast<{
@@ -233,7 +231,6 @@ export type NewsWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.EnumStatusFilter<"News"> | $Enums.Status
   createdAt?: Prisma.DateTimeFilter<"News"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"News"> | Date | string
-  videos?: Prisma.VideoListRelationFilter
 }, "id">
 
 export type NewsOrderByWithAggregationInput = {
@@ -265,7 +262,7 @@ export type NewsScalarWhereWithAggregatesInput = {
 }
 
 export type NewsCreateInput = {
-  id: string
+  id?: string
   title: string
   content: string
   category: string
@@ -273,11 +270,10 @@ export type NewsCreateInput = {
   status?: $Enums.Status
   createdAt?: Date | string
   updatedAt?: Date | string
-  videos?: Prisma.VideoCreateNestedManyWithoutNewsInput
 }
 
 export type NewsUncheckedCreateInput = {
-  id: string
+  id?: string
   title: string
   content: string
   category: string
@@ -285,7 +281,6 @@ export type NewsUncheckedCreateInput = {
   status?: $Enums.Status
   createdAt?: Date | string
   updatedAt?: Date | string
-  videos?: Prisma.VideoUncheckedCreateNestedManyWithoutNewsInput
 }
 
 export type NewsUpdateInput = {
@@ -297,7 +292,6 @@ export type NewsUpdateInput = {
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  videos?: Prisma.VideoUpdateManyWithoutNewsNestedInput
 }
 
 export type NewsUncheckedUpdateInput = {
@@ -309,11 +303,10 @@ export type NewsUncheckedUpdateInput = {
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  videos?: Prisma.VideoUncheckedUpdateManyWithoutNewsNestedInput
 }
 
 export type NewsCreateManyInput = {
-  id: string
+  id?: string
   title: string
   content: string
   category: string
@@ -378,120 +371,10 @@ export type NewsMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
-export type NewsNullableScalarRelationFilter = {
-  is?: Prisma.NewsWhereInput | null
-  isNot?: Prisma.NewsWhereInput | null
-}
-
 export type EnumStatusFieldUpdateOperationsInput = {
   set?: $Enums.Status
 }
 
-export type NewsCreateNestedOneWithoutVideosInput = {
-  create?: Prisma.XOR<Prisma.NewsCreateWithoutVideosInput, Prisma.NewsUncheckedCreateWithoutVideosInput>
-  connectOrCreate?: Prisma.NewsCreateOrConnectWithoutVideosInput
-  connect?: Prisma.NewsWhereUniqueInput
-}
-
-export type NewsUpdateOneWithoutVideosNestedInput = {
-  create?: Prisma.XOR<Prisma.NewsCreateWithoutVideosInput, Prisma.NewsUncheckedCreateWithoutVideosInput>
-  connectOrCreate?: Prisma.NewsCreateOrConnectWithoutVideosInput
-  upsert?: Prisma.NewsUpsertWithoutVideosInput
-  disconnect?: Prisma.NewsWhereInput | boolean
-  delete?: Prisma.NewsWhereInput | boolean
-  connect?: Prisma.NewsWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.NewsUpdateToOneWithWhereWithoutVideosInput, Prisma.NewsUpdateWithoutVideosInput>, Prisma.NewsUncheckedUpdateWithoutVideosInput>
-}
-
-export type NewsCreateWithoutVideosInput = {
-  id: string
-  title: string
-  content: string
-  category: string
-  image_url: string
-  status?: $Enums.Status
-  createdAt?: Date | string
-  updatedAt?: Date | string
-}
-
-export type NewsUncheckedCreateWithoutVideosInput = {
-  id: string
-  title: string
-  content: string
-  category: string
-  image_url: string
-  status?: $Enums.Status
-  createdAt?: Date | string
-  updatedAt?: Date | string
-}
-
-export type NewsCreateOrConnectWithoutVideosInput = {
-  where: Prisma.NewsWhereUniqueInput
-  create: Prisma.XOR<Prisma.NewsCreateWithoutVideosInput, Prisma.NewsUncheckedCreateWithoutVideosInput>
-}
-
-export type NewsUpsertWithoutVideosInput = {
-  update: Prisma.XOR<Prisma.NewsUpdateWithoutVideosInput, Prisma.NewsUncheckedUpdateWithoutVideosInput>
-  create: Prisma.XOR<Prisma.NewsCreateWithoutVideosInput, Prisma.NewsUncheckedCreateWithoutVideosInput>
-  where?: Prisma.NewsWhereInput
-}
-
-export type NewsUpdateToOneWithWhereWithoutVideosInput = {
-  where?: Prisma.NewsWhereInput
-  data: Prisma.XOR<Prisma.NewsUpdateWithoutVideosInput, Prisma.NewsUncheckedUpdateWithoutVideosInput>
-}
-
-export type NewsUpdateWithoutVideosInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  content?: Prisma.StringFieldUpdateOperationsInput | string
-  category?: Prisma.StringFieldUpdateOperationsInput | string
-  image_url?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type NewsUncheckedUpdateWithoutVideosInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  content?: Prisma.StringFieldUpdateOperationsInput | string
-  category?: Prisma.StringFieldUpdateOperationsInput | string
-  image_url?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-
-/**
- * Count Type NewsCountOutputType
- */
-
-export type NewsCountOutputType = {
-  videos: number
-}
-
-export type NewsCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  videos?: boolean | NewsCountOutputTypeCountVideosArgs
-}
-
-/**
- * NewsCountOutputType without action
- */
-export type NewsCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the NewsCountOutputType
-   */
-  select?: Prisma.NewsCountOutputTypeSelect<ExtArgs> | null
-}
-
-/**
- * NewsCountOutputType without action
- */
-export type NewsCountOutputTypeCountVideosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.VideoWhereInput
-}
 
 
 export type NewsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -503,8 +386,6 @@ export type NewsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  videos?: boolean | Prisma.News$videosArgs<ExtArgs>
-  _count?: boolean | Prisma.NewsCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["news"]>
 
 export type NewsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -541,18 +422,10 @@ export type NewsSelectScalar = {
 }
 
 export type NewsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "content" | "category" | "image_url" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["news"]>
-export type NewsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  videos?: boolean | Prisma.News$videosArgs<ExtArgs>
-  _count?: boolean | Prisma.NewsCountOutputTypeDefaultArgs<ExtArgs>
-}
-export type NewsIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
-export type NewsIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $NewsPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "News"
-  objects: {
-    videos: Prisma.$VideoPayload<ExtArgs>[]
-  }
+  objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     title: string
@@ -956,7 +829,6 @@ readonly fields: NewsFieldRefs;
  */
 export interface Prisma__NewsClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  videos<T extends Prisma.News$videosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.News$videosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1011,10 +883,6 @@ export type NewsFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Internal
    */
   omit?: Prisma.NewsOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.NewsInclude<ExtArgs> | null
-  /**
    * Filter, which News to fetch.
    */
   where: Prisma.NewsWhereUniqueInput
@@ -1033,10 +901,6 @@ export type NewsFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   omit?: Prisma.NewsOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.NewsInclude<ExtArgs> | null
-  /**
    * Filter, which News to fetch.
    */
   where: Prisma.NewsWhereUniqueInput
@@ -1054,10 +918,6 @@ export type NewsFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Omit specific fields from the News
    */
   omit?: Prisma.NewsOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.NewsInclude<ExtArgs> | null
   /**
    * Filter, which News to fetch.
    */
@@ -1107,10 +967,6 @@ export type NewsFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   omit?: Prisma.NewsOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.NewsInclude<ExtArgs> | null
-  /**
    * Filter, which News to fetch.
    */
   where?: Prisma.NewsWhereInput
@@ -1158,10 +1014,6 @@ export type NewsFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Omit specific fields from the News
    */
   omit?: Prisma.NewsOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.NewsInclude<ExtArgs> | null
   /**
    * Filter, which News to fetch.
    */
@@ -1211,10 +1063,6 @@ export type NewsCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.NewsOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.NewsInclude<ExtArgs> | null
-  /**
    * The data needed to create a News.
    */
   data: Prisma.XOR<Prisma.NewsCreateInput, Prisma.NewsUncheckedCreateInput>
@@ -1262,10 +1110,6 @@ export type NewsUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    * Omit specific fields from the News
    */
   omit?: Prisma.NewsOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.NewsInclude<ExtArgs> | null
   /**
    * The data needed to update a News.
    */
@@ -1333,10 +1177,6 @@ export type NewsUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.NewsOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.NewsInclude<ExtArgs> | null
-  /**
    * The filter to search for the News to update in case it exists.
    */
   where: Prisma.NewsWhereUniqueInput
@@ -1363,10 +1203,6 @@ export type NewsDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.NewsOmit<ExtArgs> | null
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.NewsInclude<ExtArgs> | null
-  /**
    * Filter which News to delete.
    */
   where: Prisma.NewsWhereUniqueInput
@@ -1387,30 +1223,6 @@ export type NewsDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
- * News.videos
- */
-export type News$videosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Video
-   */
-  select?: Prisma.VideoSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Video
-   */
-  omit?: Prisma.VideoOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.VideoInclude<ExtArgs> | null
-  where?: Prisma.VideoWhereInput
-  orderBy?: Prisma.VideoOrderByWithRelationInput | Prisma.VideoOrderByWithRelationInput[]
-  cursor?: Prisma.VideoWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.VideoScalarFieldEnum | Prisma.VideoScalarFieldEnum[]
-}
-
-/**
  * News without action
  */
 export type NewsDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1422,8 +1234,4 @@ export type NewsDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the News
    */
   omit?: Prisma.NewsOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.NewsInclude<ExtArgs> | null
 }
