@@ -27,13 +27,10 @@ export default function Home() {
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg">
-                <Link href="/signup">
+                <Link href="/nyheter">
                   Kom i gang
                   <ArrowRight className="size-4" />
                 </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <Link href="/signin">Sign in</Link>
               </Button>
             </div>
           </div>
