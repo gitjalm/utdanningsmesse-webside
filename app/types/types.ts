@@ -3,6 +3,7 @@ export type NewsStatus = "UTKAST" | "PUBLISERT" | "ARKIVERT";
 export type News = {
   id: string;
   title: string;
+  briefDescription: string;
   content: string;
   category: string;
   image_url: string;

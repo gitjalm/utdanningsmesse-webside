@@ -27,6 +27,7 @@ export type AggregateNews = {
 export type NewsMinAggregateOutputType = {
   id: string | null
   title: string | null
+  briefDescription: string | null
   content: string | null
   category: string | null
   image_url: string | null
@@ -38,6 +39,7 @@ export type NewsMinAggregateOutputType = {
 export type NewsMaxAggregateOutputType = {
   id: string | null
   title: string | null
+  briefDescription: string | null
   content: string | null
   category: string | null
   image_url: string | null
@@ -49,6 +51,7 @@ export type NewsMaxAggregateOutputType = {
 export type NewsCountAggregateOutputType = {
   id: number
   title: number
+  briefDescription: number
   content: number
   category: number
   image_url: number
@@ -62,6 +65,7 @@ export type NewsCountAggregateOutputType = {
 export type NewsMinAggregateInputType = {
   id?: true
   title?: true
+  briefDescription?: true
   content?: true
   category?: true
   image_url?: true
@@ -73,6 +77,7 @@ export type NewsMinAggregateInputType = {
 export type NewsMaxAggregateInputType = {
   id?: true
   title?: true
+  briefDescription?: true
   content?: true
   category?: true
   image_url?: true
@@ -84,6 +89,7 @@ export type NewsMaxAggregateInputType = {
 export type NewsCountAggregateInputType = {
   id?: true
   title?: true
+  briefDescription?: true
   content?: true
   category?: true
   image_url?: true
@@ -168,6 +174,7 @@ export type NewsGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 export type NewsGroupByOutputType = {
   id: string
   title: string
+  briefDescription: string
   content: string
   category: string
   image_url: string
@@ -200,6 +207,7 @@ export type NewsWhereInput = {
   NOT?: Prisma.NewsWhereInput | Prisma.NewsWhereInput[]
   id?: Prisma.StringFilter<"News"> | string
   title?: Prisma.StringFilter<"News"> | string
+  briefDescription?: Prisma.StringFilter<"News"> | string
   content?: Prisma.StringFilter<"News"> | string
   category?: Prisma.StringFilter<"News"> | string
   image_url?: Prisma.StringFilter<"News"> | string
@@ -211,6 +219,7 @@ export type NewsWhereInput = {
 export type NewsOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  briefDescription?: Prisma.SortOrder
   content?: Prisma.SortOrder
   category?: Prisma.SortOrder
   image_url?: Prisma.SortOrder
@@ -225,6 +234,7 @@ export type NewsWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.NewsWhereInput[]
   NOT?: Prisma.NewsWhereInput | Prisma.NewsWhereInput[]
   title?: Prisma.StringFilter<"News"> | string
+  briefDescription?: Prisma.StringFilter<"News"> | string
   content?: Prisma.StringFilter<"News"> | string
   category?: Prisma.StringFilter<"News"> | string
   image_url?: Prisma.StringFilter<"News"> | string
@@ -236,6 +246,7 @@ export type NewsWhereUniqueInput = Prisma.AtLeast<{
 export type NewsOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  briefDescription?: Prisma.SortOrder
   content?: Prisma.SortOrder
   category?: Prisma.SortOrder
   image_url?: Prisma.SortOrder
@@ -253,6 +264,7 @@ export type NewsScalarWhereWithAggregatesInput = {
   NOT?: Prisma.NewsScalarWhereWithAggregatesInput | Prisma.NewsScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"News"> | string
   title?: Prisma.StringWithAggregatesFilter<"News"> | string
+  briefDescription?: Prisma.StringWithAggregatesFilter<"News"> | string
   content?: Prisma.StringWithAggregatesFilter<"News"> | string
   category?: Prisma.StringWithAggregatesFilter<"News"> | string
   image_url?: Prisma.StringWithAggregatesFilter<"News"> | string
@@ -264,6 +276,7 @@ export type NewsScalarWhereWithAggregatesInput = {
 export type NewsCreateInput = {
   id?: string
   title: string
+  briefDescription: string
   content: string
   category: string
   image_url: string
@@ -275,6 +288,7 @@ export type NewsCreateInput = {
 export type NewsUncheckedCreateInput = {
   id?: string
   title: string
+  briefDescription: string
   content: string
   category: string
   image_url: string
@@ -286,6 +300,7 @@ export type NewsUncheckedCreateInput = {
 export type NewsUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  briefDescription?: Prisma.StringFieldUpdateOperationsInput | string
   content?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   image_url?: Prisma.StringFieldUpdateOperationsInput | string
@@ -297,6 +312,7 @@ export type NewsUpdateInput = {
 export type NewsUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  briefDescription?: Prisma.StringFieldUpdateOperationsInput | string
   content?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   image_url?: Prisma.StringFieldUpdateOperationsInput | string
@@ -308,6 +324,7 @@ export type NewsUncheckedUpdateInput = {
 export type NewsCreateManyInput = {
   id?: string
   title: string
+  briefDescription: string
   content: string
   category: string
   image_url: string
@@ -319,6 +336,7 @@ export type NewsCreateManyInput = {
 export type NewsUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  briefDescription?: Prisma.StringFieldUpdateOperationsInput | string
   content?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   image_url?: Prisma.StringFieldUpdateOperationsInput | string
@@ -330,6 +348,7 @@ export type NewsUpdateManyMutationInput = {
 export type NewsUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  briefDescription?: Prisma.StringFieldUpdateOperationsInput | string
   content?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   image_url?: Prisma.StringFieldUpdateOperationsInput | string
@@ -341,6 +360,7 @@ export type NewsUncheckedUpdateManyInput = {
 export type NewsCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  briefDescription?: Prisma.SortOrder
   content?: Prisma.SortOrder
   category?: Prisma.SortOrder
   image_url?: Prisma.SortOrder
@@ -352,6 +372,7 @@ export type NewsCountOrderByAggregateInput = {
 export type NewsMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  briefDescription?: Prisma.SortOrder
   content?: Prisma.SortOrder
   category?: Prisma.SortOrder
   image_url?: Prisma.SortOrder
@@ -363,6 +384,7 @@ export type NewsMaxOrderByAggregateInput = {
 export type NewsMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  briefDescription?: Prisma.SortOrder
   content?: Prisma.SortOrder
   category?: Prisma.SortOrder
   image_url?: Prisma.SortOrder
@@ -380,6 +402,7 @@ export type EnumStatusFieldUpdateOperationsInput = {
 export type NewsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   title?: boolean
+  briefDescription?: boolean
   content?: boolean
   category?: boolean
   image_url?: boolean
@@ -391,6 +414,7 @@ export type NewsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
 export type NewsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   title?: boolean
+  briefDescription?: boolean
   content?: boolean
   category?: boolean
   image_url?: boolean
@@ -402,6 +426,7 @@ export type NewsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
 export type NewsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   title?: boolean
+  briefDescription?: boolean
   content?: boolean
   category?: boolean
   image_url?: boolean
@@ -413,6 +438,7 @@ export type NewsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
 export type NewsSelectScalar = {
   id?: boolean
   title?: boolean
+  briefDescription?: boolean
   content?: boolean
   category?: boolean
   image_url?: boolean
@@ -421,7 +447,7 @@ export type NewsSelectScalar = {
   updatedAt?: boolean
 }
 
-export type NewsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "content" | "category" | "image_url" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["news"]>
+export type NewsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "briefDescription" | "content" | "category" | "image_url" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["news"]>
 
 export type $NewsPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "News"
@@ -429,6 +455,7 @@ export type $NewsPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     title: string
+    briefDescription: string
     content: string
     category: string
     image_url: string
@@ -860,6 +887,7 @@ export interface Prisma__NewsClient<T, Null = never, ExtArgs extends runtime.Typ
 export interface NewsFieldRefs {
   readonly id: Prisma.FieldRef<"News", 'String'>
   readonly title: Prisma.FieldRef<"News", 'String'>
+  readonly briefDescription: Prisma.FieldRef<"News", 'String'>
   readonly content: Prisma.FieldRef<"News", 'String'>
   readonly category: Prisma.FieldRef<"News", 'String'>
   readonly image_url: Prisma.FieldRef<"News", 'String'>

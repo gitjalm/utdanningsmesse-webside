@@ -17,13 +17,14 @@ export default function NewsCard({ news }: { news: News }) {
       <img
         src={news.image_url}
         alt="Nyhets Bilde"
-        className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40"
+        className="relative z-20 aspect-video w-full object-cover"
       />
       <CardHeader>
         <CardAction>
           <Badge variant="secondary">{news.category}</Badge>
         </CardAction>
         <CardTitle>{news.title}</CardTitle>
+        <CardDescription>{news.briefDescription}</CardDescription>
       </CardHeader>
       <CardFooter>
         <Button className="w-full">Les Mer</Button>

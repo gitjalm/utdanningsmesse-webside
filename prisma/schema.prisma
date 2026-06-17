@@ -95,6 +95,7 @@ model Verification {
 model News {
   id        String   @id @default(cuid())
   title     String
+  briefDescription String
   content   String
   category String
   image_url String

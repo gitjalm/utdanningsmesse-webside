@@ -140,6 +140,7 @@ export type VerificationScalarFieldEnum = (typeof VerificationScalarFieldEnum)[k
 export const NewsScalarFieldEnum = {
   id: 'id',
   title: 'title',
+  briefDescription: 'briefDescription',
   content: 'content',
   category: 'category',
   image_url: 'image_url',

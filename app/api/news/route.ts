@@ -16,6 +16,7 @@ export async function POST(req: Request) {
     data: {
       title: body.title,
       content: body.content,
+      briefDescription: body.brief_description,
       category: body.category,
       image_url: body.image_url,
       status: body.status ?? "UTKAST",

@@ -21,11 +21,11 @@ export const loginSchema = z.object({
 
 export const newsSchema = z.object({
   title: z.string().min(1, "Tittel kan ikke være tomt"),
+  brief_description: z
+    .string()
+    .min(1, "Den korte beskrivelsen kan ikke være tomt"),
   content: z.string().min(1, "Innhold kan ikke være tomt"),
-  category: z.enum(
-    ["INFO", "ALERT", "EVENT"],
-    "Kategori må være INFO, ALERT eller EVENT",
-  ),
+  category: z.string().min(1, "Kategori kan ikke være tomt"),
   status: z.enum(
     ["PUBLISERT", "ARKIVERT", "UTKAST"],
     "Kategori må være PUBLISERT, ARKIVERT eller UTKAST",

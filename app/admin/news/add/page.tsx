@@ -22,7 +22,8 @@ export default function AddNewsPage() {
     defaultValues: {
       title: "",
       content: "",
-      category: "INFO",
+      brief_description: "",
+      category: "",
       status: "UTKAST",
       image_url: "",
     },
@@ -101,6 +102,27 @@ export default function AddNewsPage() {
                     aria-invalid={fieldState.invalid}
                     autoComplete="off"
                     placeholder="Skriv inn innhold"
+                  />
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+            <Controller
+              name="brief_description"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor="create-news-brief-description">
+                    Kort Innledning
+                  </FieldLabel>
+                  <Input
+                    {...field}
+                    id="create-news-content"
+                    aria-invalid={fieldState.invalid}
+                    autoComplete="off"
+                    placeholder="Skriv en kort innledning"
                   />
                   {fieldState.invalid && (
                     <FieldError errors={[fieldState.error]} />

@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Edit, ImageIcon, Trash2 } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 type NewsTableProps = {
@@ -25,6 +26,7 @@ const statusClassNames: Record<NewsStatus, string> = {
 };
 
 function DeleteNews({ news }: { news: News }) {
+  const router = useRouter();
   const queryClient = useQueryClient();
   const deleteMutation = useMutation({
     mutationFn: async () => {
@@ -44,7 +46,8 @@ function DeleteNews({ news }: { news: News }) {
     },
     onSuccess: () => {
       toast.success("Nyheten ble slettet");
-      queryClient.invalidateQueries({ queryKey: ["News"] });
+      queryClient.invalidateQueries({ queryKey: ["news"] });
+      router.refresh();
     },
     onError: (error) => {
       toast.error("Klarte ikke å slette nyheten", {
