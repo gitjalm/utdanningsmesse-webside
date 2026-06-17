@@ -14,3 +14,18 @@ export function useNews() {
     },
   });
 }
+
+export function usePublishedNews() {
+  return useQuery({
+    queryKey: ["news"],
+    queryFn: async () => {
+      const response = await fetch("/api/news/published");
+
+      if (!response.ok) {
+        throw new Error("Kunne ikke hente nyheter");
+      }
+
+      return response.json();
+    },
+  });
+}

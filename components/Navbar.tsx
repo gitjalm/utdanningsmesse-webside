@@ -9,6 +9,7 @@ import {
   LogIn,
   LogOut,
   Menu,
+  Newspaper,
   ShieldUser,
   UserRoundPlus,
   X,
@@ -59,6 +60,17 @@ export default function Navbar() {
               <Link href="/">
                 <House className="size-4" />
                 Hjem
+              </Link>
+            </Button>
+
+            <Button
+              asChild
+              variant={isActive("/news") ? "secondary" : "ghost"}
+              className="gap-2"
+            >
+              <Link href="/news">
+                <Newspaper className="size-4" />
+                Nyheter
               </Link>
             </Button>
 

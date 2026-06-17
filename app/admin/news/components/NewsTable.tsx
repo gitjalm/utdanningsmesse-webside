@@ -1,5 +1,6 @@
 "use client";
 
+import { News, NewsStatus } from "@/app/types/types";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -7,21 +8,8 @@ import { Edit, ImageIcon, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { toast } from "sonner";
 
-type NewsStatus = "UTKAST" | "PUBLISERT" | "ARKIVERT";
-
-export type NewsTableItem = {
-  id: string;
-  title: string;
-  content: string;
-  category: string;
-  image_url: string;
-  status: NewsStatus;
-  createdAt: Date | string;
-  updatedAt: Date | string;
-};
-
 type NewsTableProps = {
-  news: NewsTableItem[];
+  news: News[];
 };
 
 const statusLabels: Record<NewsStatus, string> = {
@@ -36,7 +24,7 @@ const statusClassNames: Record<NewsStatus, string> = {
   ARKIVERT: "bg-muted text-muted-foreground",
 };
 
-function DeleteNews({ news }: { news: NewsTableItem }) {
+function DeleteNews({ news }: { news: News }) {
   const queryClient = useQueryClient();
   const deleteMutation = useMutation({
     mutationFn: async () => {
